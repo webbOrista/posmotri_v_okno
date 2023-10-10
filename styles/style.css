@@ -37,47 +37,6 @@ ol {
   list-style: none;
 }
 
-button {
-  border: 1px solid #fff;
-  background-color: transparent;
-  color: #fff;
-  text-align: center;
-  font-family: Fira Sans Condensed;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  padding: 6px 0;
-}
-
-.search-form__submit-button {
-  width: 194px;
-}
-
-.more-button {
-  width: 396px;
-  /* Делаем обводку в состоянии focus видимой */
-  margin: 0 2px 2px 2px;
-}
-
-button:active {
-  background-color: #545050;
-}
-
-button:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-button:focus {
-  outline: none;
-}
-
-button:focus-visible {
-  outline: 1px solid #fff;
-  outline-offset: 1px;
-}
-
 .visually-hidden {
   position: absolute;
   inline-size: 1px;
@@ -104,15 +63,18 @@ button:focus-visible {
 }
 
 .result__video-container {
-  padding-bottom: 16px;
+  margin-bottom: 16px;
   position: relative;
-  /* Задать размеры контейнеру .result__video-container  */
+  width: 711px;
+  height: 386px;
 }
 
 .result__video {
+  height: 100%;
+  width: 100%;
   object-fit: cover;
-  width: 711px;
-  height: 386px;
+  object-position: center;
+ 
 }
 
 .search-form {
@@ -124,6 +86,11 @@ button:focus-visible {
   align-items: end;
 }
 
+.search-form__fieldset {
+  border: none;
+  padding: 0;
+}
+
 .search-form__fieldset-title {
   color: #fff;
   font-family: Fira Sans Condensed;
@@ -132,18 +99,6 @@ button:focus-visible {
   font-weight: 400;
   line-height: normal;
   margin-bottom: 5px;
-}
-
-.search-form__fieldset {
-  border: none;
-  padding: 0;
-}
-
-.search-form__checkbox-list {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 5px;
-  gap: 15px;
 }
 
 .search-form__label {
@@ -197,20 +152,25 @@ button:focus-visible {
   cursor: text;
 }
 
+.search-form__checkbox-list {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+  gap: 15px;
+}
+
 .search-form__pseudo-checkbox {
   width: 19px;
   height: 19px;
   border: 1px solid #fff;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 input[type="checkbox"]:checked + .search-form__pseudo-checkbox::before {
   content: "";
-  position: absolute;
-  /* Выравниваем внутренний элемент чекбокса по центру */
-  top: 1px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 1px;
   width: 15px;
   height: 15px;
   background-color: #fff;
@@ -233,35 +193,23 @@ input[type="checkbox"]:checked + .search-form__pseudo-checkbox::before {
 
 .content__list {
   position: relative;
-  margin-top: 26px;
-  max-height: 298px;
+  margin-top: 20px;
+  max-height: 300px;
   overflow-y: auto;
   overflow-x: hidden;
-}
-
-/* Скрываем scrollbar */
-.content__list::-webkit-scrollbar {
-  display: none;
-}
-
-.content__list {
+  /* Скрываем scrollbar, сохраняя возможность скролла */
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
+/* Скрываем scrollbar, сохраняя возможность скролла */
+.content__list::-webkit-scrollbar {
+  display: none;
+}
+
+/* Убираем нижний отступ у последней карточки */
 .content__list-item:not(:last-of-type) {
   padding-bottom: 30px;
-}
-
-.content__video-card {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.content__video-card:hover {
-  text-decoration: underline;
 }
 
 .content__card-link {
@@ -276,14 +224,27 @@ input[type="checkbox"]:checked + .search-form__pseudo-checkbox::before {
   background-color: #545050;
 }
 
+.content__video-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.content__video-card:hover {
+  text-decoration: underline;
+}
+
 .content__video-card-thumbnail {
-  height: 103px;
-  width: 194px;
+  max-height: 103px;
+  max-width: 194px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .content__video-card-description-container {
   width: 100%;
-  height: 103px;
+  max-height: 103px;
   padding: 2px;
 }
 
@@ -296,7 +257,7 @@ input[type="checkbox"]:checked + .search-form__pseudo-checkbox::before {
   line-height: 100%; /* 30px */
   text-transform: uppercase;
   margin-bottom: 6px;
-  /* при этом значении обводка в focus становится ровной */
+  /* при этом значении обводка карточки в состоянии focus становится ровной */
   margin-top: 4px;
 }
 
@@ -307,4 +268,46 @@ input[type="checkbox"]:checked + .search-form__pseudo-checkbox::before {
   font-style: normal;
   font-weight: 400;
   line-height: 16.2px; /* 90% */
+}
+
+/* Задаем все стили для кнопок в одном месте */
+button {
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  text-align: center;
+  font-family: Fira Sans Condensed;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 6px 0;
+}
+
+.search-form__submit-button {
+  width: 194px;
+}
+
+.more-button {
+  width: 396px;
+  /* Делаем обводку в состоянии focus видимой */
+  margin: 0 2px 2px 2px;
+}
+
+button:active {
+  background-color: #545050;
+}
+
+button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
 }

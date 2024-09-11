@@ -218,7 +218,6 @@ ol {
   text-decoration: none;
 }
 
-/* Задаем новый фон карточке в момент нажатия и при нахождении в состоянии "выбранный" */
 .content__card-link:active,
 .content__card-link_current {
   background-color: #545050;
@@ -248,7 +247,6 @@ ol {
 }
 
 .content__video-card-title {
-  /* при этом значении обводка карточки в состоянии focus становится ровной */
   margin-top: 4px;
   margin-bottom: 6px;
   color: #fff;
@@ -269,7 +267,6 @@ ol {
   line-height: 16.2px; /* 90% */
 }
 
-/* Задаем все стили для кнопок в одном месте */
 .button {
   border: 1px solid #fff;
   padding: 6px 0;
@@ -289,7 +286,6 @@ ol {
 
 .more-button {
   width: 396px;
-  /* Делаем обводку в состоянии focus видимой */
   margin: 0 2px 2px 2px;
 }
 
